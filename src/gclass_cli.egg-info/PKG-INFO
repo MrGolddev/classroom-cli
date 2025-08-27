@@ -1,0 +1,26 @@
+Metadata-Version: 2.4
+Name: gclass-cli
+Version: 0.3.0
+Summary: Google Classroom CLI
+Author-email: mrgolddev <mrgolddev@gmail.com>
+License: MIT
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: click>=8.1
+Requires-Dist: google-api-python-client>=2.131
+Requires-Dist: google-auth-oauthlib>=1.2
+Requires-Dist: google-auth-httplib2>=0.2.0
+Requires-Dist: platformdirs>=4.2
+Requires-Dist: rich>=13.7
+
+# gclass-cli
+
+## Dev
+```bash
+python -m venv .venv
+# Windows: .venv\Scripts\Activate.ps1
+# macOS/Linux: source .venv/bin/activate
+pip install -e .
+gclass paths
+# put Google OAuth credentials.json at shown path
+gclass auth

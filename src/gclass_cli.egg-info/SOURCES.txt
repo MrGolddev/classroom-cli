@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+src/gclass/_init_.py
+src/gclass/auth.py
+src/gclass/cli.py
+src/gclass/config.py
+src/gclass/services.py
+src/gclass_cli.egg-info/PKG-INFO
+src/gclass_cli.egg-info/SOURCES.txt
+src/gclass_cli.egg-info/dependency_links.txt
+src/gclass_cli.egg-info/entry_points.txt
+src/gclass_cli.egg-info/requires.txt
+src/gclass_cli.egg-info/top_level.txt

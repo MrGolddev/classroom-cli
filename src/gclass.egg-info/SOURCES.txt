@@ -1,0 +1,10 @@
+pyproject.toml
+src/gclass/_init_.py
+src/gclass/auth.py
+src/gclass/cli.py
+src/gclass/config.py
+src/gclass/services.py
+src/gclass.egg-info/PKG-INFO
+src/gclass.egg-info/SOURCES.txt
+src/gclass.egg-info/dependency_links.txt
+src/gclass.egg-info/top_level.txt
