@@ -1,6 +1,6 @@
 # gclass-cli
 
-## Dev
+## installation
 ```bash
 python -m venv .venv
 # Windows: .venv\Scripts\Activate.ps1
