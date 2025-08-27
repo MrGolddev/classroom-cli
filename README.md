@@ -4,6 +4,7 @@ Command-line interface for Google Classroom and Drive.
 
 ## Installation
 
+
 Install the package:
 ```bash
 pip install -e .
@@ -62,6 +63,29 @@ A browser window opens—log in with your Classroom account and allow permission
 ```bash
 gclass list-courses
 ```
+=======
+1. Create and activate a virtual environment:
+   ```bash
+   python -m venv .venv
+   # Windows: .venv\Scripts\Activate.ps1
+   # macOS/Linux: source .venv/bin/activate
+   ```
+2. Install the package:
+   ```bash
+   pip install -e .
+   ```
+
+## Authentication
+
+1. Show configuration paths:
+   ```bash
+   gclass paths
+   ```
+2. Place your Google API `credentials.json` at the printed location.
+3. Authorize the CLI:
+   ```bash
+   gclass auth
+   ```
 
 ## Usage
 
