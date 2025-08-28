@@ -2,7 +2,6 @@
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
-[![Tests](https://img.shields.io/badge/tests-pytest-orange.svg)]()
 
 Command-line interface for **Google Classroom** and **Google Drive**.  
 Lets you list courses, view assignments, upload files, and submit work—all from your terminal.
@@ -118,9 +117,3 @@ gclass submit --assignment <AssignmentID> --file "report.pdf"
 
 ---
 
-## Development
-
-Run tests with:
-```bash
-pytest
-```
