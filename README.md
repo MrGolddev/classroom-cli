@@ -101,10 +101,10 @@ Common commands:
 gclass list-courses --pick
 
 # See assignments
-gclass list-assignments --course 613975195696
+gclass list-assignments --course <classID>
 
 # Submit work
-gclass submit --assignment 790062231156 --file "report.pdf"
+gclass submit --assignment <AssignmentID> --file "report.pdf"
 ```
 
 ---
