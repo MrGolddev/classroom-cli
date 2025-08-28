@@ -1,113 +1,123 @@
-# gclass-cli
+      # gclass-cli
 
-Command-line interface for Google Classroom and Drive.
+[![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/tests-pytest-orange.svg)]()
 
-## Installation
+Command-line interface for **Google Classroom** and **Google Drive**.  
+Lets you list courses, view assignments, upload files, and submit work—all from your terminal.
 
 
-Install the package:
-```bash
-pip install -e .
-```
+## Installation & setup
 
-## Authentication
-
-**Step 1. Make a Google Cloud project**
-
-Go to [Google Cloud Console](https://console.cloud.google.com) and sign in with the same Google account you use for Classroom. Click the project dropdown → **New Project** → name it something like `gclass-cli`.
-
-**Step 2. Enable the APIs**
-
-Inside your new project:
-
-1. Go to **APIs & Services > Library**.
-2. Search for and enable:
-   - **Google Classroom API**
-   - **Google Drive API** (needed for file submissions)
-
-**Step 3. OAuth consent screen**
-
-Go to **APIs & Services > OAuth consent screen**. Choose **External** and fill in app name, support email, etc. Under **Test Users**, add your Gmail (the one that has Classroom access). If you don’t add yourself, login will fail.
-
-**Step 4. Create OAuth credentials**
-
-Go to **APIs & Services > Credentials**. Click **Create Credentials > OAuth Client ID**, choose **Desktop App**, name it `gclass-cli`, and click **Create**. Download the JSON file—this is your `credentials.json`.
-
-**Step 5. Put creds in your CLI config**
-
-Run:
-
-```bash
-gclass paths
-```
-
-It prints something like:
-
-```
-Config dir:       C:\Users\<you>\AppData\Local\gclass-cli
-credentials.json: C:\Users\<you>\AppData\Local\gclass-cli\credentials.json
-```
-
-Copy the downloaded `credentials.json` file into that path.
-
-**Step 6. First auth**
-
-Run:
-
-```bash
-gclass auth
-```
-
-A browser window opens—log in with your Classroom account and allow permissions. A `token.json` is stored alongside your credentials. Now you’re authenticated; try:
-
-```bash
-gclass list-courses
-```
-=======
-1. Create and activate a virtual environment:
+1. Create & activate a virtual environment:
    ```bash
    python -m venv .venv
    # Windows: .venv\Scripts\Activate.ps1
    # macOS/Linux: source .venv/bin/activate
    ```
+
 2. Install the package:
    ```bash
    pip install -e .
    ```
 
-## Authentication
-
-1. Show configuration paths:
+3. Show paths where config/creds are stored:
    ```bash
    gclass paths
    ```
-2. Place your Google API `credentials.json` at the printed location.
-3. Authorize the CLI:
+
+4. Place your Google API `credentials.json` there, then run:
    ```bash
    gclass auth
    ```
 
+Now you’re ready—try:
+```bash
+gclass list-courses
+```
+
+---
+
+## Full Setup (Google Cloud Project)
+
+If Quickstart fails (like fresh accounts or new APIs), follow the full setup:
+
+### Step 1. Make a Google Cloud project
+- Go to [Google Cloud Console](https://console.cloud.google.com)  
+- Click **New Project** → name it `gclass-cli`
+
+### Step 2. Enable APIs
+- Enable **Google Classroom API**  
+- Enable **Google Drive API**
+
+### Step 3. OAuth consent screen
+- Choose **External** → fill details  
+- Under **Test Users**, add your Gmail (the account with Classroom access)  
+
+### Step 4. Create OAuth credentials
+- Credentials → **Create Credentials > OAuth Client ID**  
+- App type: **Desktop App**  
+- Download the JSON as `credentials.json`
+
+### Step 5. Put creds in CLI config
+```bash
+gclass paths
+```
+Copy the JSON into the printed path.
+
+### Step 6. First auth
+```bash
+gclass auth
+```
+Log in, grant permissions. A `token.json` will be saved.  
+
+Test it:
+```bash
+gclass list-courses
+```
+
+---
+
 ## Usage
 
-Common commands include:
+Common commands:
 
-- `gclass whoami` – display the signed-in account
-- `gclass list-courses [--page-size N] [--pick]` – list courses and optionally set a default
-- `gclass list-students --course COURSE_ID` – show students in a course
-- `gclass list-assignments --course COURSE_ID` – show coursework and due dates
-- `gclass set-default --course COURSE_ID` – update the default course
-- `gclass upload --file PATH` – upload a file to Drive
-- `gclass open [--course COURSE_ID] [--assignment COURSEWORK_ID]` – open a course or assignment in the browser
-- `gclass submit --assignment COURSEWORK_ID --file PATH [--course COURSE_ID]` – upload and turn in work
+- `gclass whoami` → display signed-in account  
+- `gclass list-courses [--page-size N] [--pick]` → list courses / set default  
+- `gclass list-students --course COURSE_ID` → show course students  
+- `gclass list-assignments --course COURSE_ID` → show coursework & due dates  
+- `gclass set-default --course COURSE_ID` → set default course  
+- `gclass upload --file PATH` → upload a file to Drive  
+- `gclass open [--course COURSE_ID] [--assignment COURSEWORK_ID]` → open in browser  
+- `gclass submit --assignment COURSEWORK_ID --file PATH [--course COURSE_ID]` → turn in work  
 
-The CLI stores settings and tokens in the paths shown by `gclass paths`.
+---
 
-## Project structure
+## Example Workflow
 
-- `src/gclass/cli.py` – command-line interface built with Click and Rich
-- `src/gclass/auth.py` – OAuth flow and token management
-- `src/gclass/config.py` – configuration directories, scopes and settings
-- `src/gclass/services.py` – helpers for Classroom and Drive API clients
+```bash
+# Pick a course
+gclass list-courses --pick
+
+# See assignments
+gclass list-assignments --course 613975195696
+
+# Submit work
+gclass submit --assignment 790062231156 --file "report.pdf"
+```
+
+---
+
+## Project Structure
+
+- `src/gclass/cli.py` → CLI with Click & Rich  
+- `src/gclass/auth.py` → OAuth + token handling  
+- `src/gclass/config.py` → paths, settings, scopes  
+- `src/gclass/services.py` → Classroom & Drive API helpers  
+
+---
 
 ## Development
 
